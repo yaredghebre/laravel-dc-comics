@@ -31,8 +31,8 @@
                         </td>
                     </tr>
                 @endforeach
-
             </tbody>
         </table>
+        <h3><a href="{{ route('home') }}">Torna alla Home Page</a></h3>
     </div>
 @endsection

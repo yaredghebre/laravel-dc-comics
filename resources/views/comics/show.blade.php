@@ -14,6 +14,8 @@
         
             </div>
         </div>
+        <h3><a href="{{ route('home') }}">Torna alla Home Page</a></h3>
+        <h3><a href="{{ route('comics.index') }}">Torna alla Lista dei fumetti</a></h3>
     </div>
 @endsection
 
