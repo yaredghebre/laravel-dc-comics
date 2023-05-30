@@ -27,7 +27,16 @@ class ComicsTableSeeder extends Seeder
             $comic->sale_date = $comic_item['sale_date'];
             $comic->type = $comic_item['type'];
             $comic->save();
-    
+            
+
+            // ALTRO METODO:
+            // $comic = new Comic();
+            // $comic->fill($comic_item);
+            // $comic->save();
+            // Condizioni: 
+            // 1) i campi devono coincidere
+            // 2) in Models/Comic.php devo inserire sotto use HasFactory:
+                // protected $fillable = [array con tutti gli elementi ''];
         }
     }
 }
