@@ -2,8 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>Lista dei fumetti</h2>
-        <table class="table">
+        <table class="table mt-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -15,6 +14,7 @@
                     <th scope="col">Immagine</th>
                 </tr>
             </thead>
+
             <tbody>
                 @foreach ($comics as $comic)
                     <tr>
@@ -35,7 +35,7 @@
                             <form class="d-inline-block" action="{{ route('comics.destroy', $comic->id) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">
+                                <button type="submit" class="btn btn-danger" onclick="showAlert()">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
@@ -44,7 +44,18 @@
                 @endforeach
             </tbody>
         </table>
-        <h3><a href="{{ route('home') }}">Torna alla Home Page</a></h3>
-        <h3><a href="{{ route('comics.create') }}">Inserisci un nuovo fumetto</a></h3>
+
+        <a href="{{ route('comics.create') }}"><i class="fa-solid fa-plus fa-2xl"></i></a>
+
     </div>
-@endsection
+
+    <script>
+        function showAlert() {
+            if (confirm("Sei sicuro di voler cancellare questo elemento?")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+    @endsection

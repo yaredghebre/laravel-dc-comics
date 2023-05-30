@@ -50,6 +50,6 @@
 
         </form>
 
-        <h3><a href="{{ route('comics.index') }}">Torna alla pagina dei fumetti</a></h3>
+        <h3 class="mt-4"><a href="{{ route('comics.index') }}">Torna ai COMICS</a></h3>
     </div>
 @endsection

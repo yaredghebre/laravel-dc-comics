@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Laravel DC Comics</title>
 
     {{-- FontAwesome --}}
 
@@ -22,8 +22,9 @@
 </head>
 
 <body>
+    @include('partials.header')
 
-    <main class="bg-light">
+    <main>
         @yield('content')
     </main>
 

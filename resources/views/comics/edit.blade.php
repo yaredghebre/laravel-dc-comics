@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2>Aggiorna: {{ $comic->title }}</h2>
+    <div class="container mt-5">
+        <h2>{{ $comic->title }}</h2>
 
         <form action="{{ route('comics.update', $comic->id) }}" method="POST">
             @method('PUT')
@@ -21,7 +21,6 @@
             <div class="mb-3">
                 <label for="type" class="form-label">Tipologia</label>
                 <select id="type" name="type" class="form-select">
-                    {{-- <option selected>Seleziona</option> --}}
                     <option @selected($comic->type === 'comic book') value="comic book">Comic Book</option>
                     <option @selected($comic->type === 'graphic novel') value="graphic novel">Graphic Novel</option>
                     <option @selected($comic->type === 'anime') value="anime">Anime</option>
