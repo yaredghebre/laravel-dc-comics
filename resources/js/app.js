@@ -5,11 +5,21 @@ import.meta.glob([
     '../img/**'
 ])
 
+const deleteBtns = document.querySelectorAll(".btn-delete");
 
-// function showAlert() {
-//     if (confirm("Sei sicuro di voler cancellare questo elemento?")) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
+if(deleteBtns.length > 0) {
+    deleteBtns.forEach((btn) => {
+        btn.addEventListener("click", function( event ) {
+            event.preventDefault();
+            const comicTitle = btn.getAttribute("data-comic-title");
+
+            const deleteModal = new bootstrap.Modal(document.getElementById("delete-modal")
+            );
+            document.getElementById("comic-title").innerText = comicTitle;
+            document.getElementById("action-delete").addEventListener("click", function(){
+                btn.parentElement.submit();
+            });
+            deleteModal.show();
+        });
+    });
+}

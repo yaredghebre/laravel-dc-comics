@@ -11,7 +11,6 @@
                 <p class="card-text"><strong>Data di vendita: </strong> {{ $comic->sale_date }}</p>
                 <p class="card-text"><strong>Serie: </strong> {{ $comic->series }}</p>
                 <p class="card-text"><strong>Tipologia: </strong> {{ $comic->type }}</p>
-        
             </div>
         </div>
     </div>

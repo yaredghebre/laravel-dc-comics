@@ -35,7 +35,7 @@
                             <form class="d-inline-block" action="{{ route('comics.destroy', $comic->id) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger" onclick="showAlert()">
+                                <button type="submit" class="btn btn-danger btn-delete" data-comic-title="{{ $comic->title }}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
@@ -49,7 +49,14 @@
 
     </div>
 
-    <script>
+    @include('partials.modal_delete')
+
+    @endsection
+    
+    {{-- onclick="showAlert()" --}}
+
+
+    {{-- <script>
         function showAlert() {
             if (confirm("Sei sicuro di voler cancellare questo elemento?")) {
                 return true;
@@ -57,5 +64,4 @@
                 return false;
             }
         }
-    </script>
-    @endsection
+    </script> --}}
