@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -35,15 +38,25 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-        $data = $request->all();
+        // DATA VALIDATION metodo semplice
+        // $request->validate([
+        //     'title' => 'required|min:5|max:30',
+        //     'thumb' => 'required|min:3|max:30',
+        //     'price' => 'required|min:1|max:10',
+        //     'series' => 'required|min:5|max:100',
+        //     'sale_date' => 'required',
+        //     'type' => 'required|min:3|max:30',
+        // ]);
+        // $data = $request->all();
+
+        $data = $request->validated();
         $comic = new Comic();
         $comic->fill($data);
         $comic->save();
 
         return redirect()->route('comics.index');
-
     }
 
     /**
@@ -77,14 +90,24 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateComicRequest $request, $id)
     {
-        $data = $request->all();
+        // DATA VALIDATION metodo semplice
+        // $request->validate([
+        //     'title' => 'required|min:5|max:30',
+        //     'thumb' => 'required|min:3|max:30',
+        //     'price' => 'required|min:1|max:10',
+        //     'series' => 'required|min:5|max:100',
+        //     'sale_date' => 'required',
+        //     'type' => 'required|min:3|max:30',
+        // ]);
+        // $data = $this->validation($request->all());
+
+        $data = $request->validated();
         $comic = Comic::findOrFail($id);
         $comic->update($data);
 
         return redirect()->route('comics.show', $comic->id);
-
     }
 
     /**
@@ -97,7 +120,27 @@ class ComicController extends Controller
     {
         $comic = Comic::findOrFail($id);
         $comic->delete();
-        
+
         return redirect()->route('comics.index');
     }
+
+
+    // FUNZIONE PER DEFINIRE LE VALIDAZIONI metodo semplice
+    // private function validation($data) {
+    //     $validator = Validator::make($data, [
+    //         'title' => 'required|min:5|max:30',
+    //         'thumb' => 'required',
+    //         'price' => 'required|min:1|max:10',
+    //         'series' => 'required|min:5|max:100',
+    //         'sale_date' => 'required',
+    //         'type' => 'required|min:3|max:30',
+    //     ], [
+    //         'title.required' => 'Il titolo è obbligatorio',
+    //         'title.min' => 'Il titolo deve essere lungo almeno :min caratteri',
+    //         'title.max' => 'Il titolo non deve superare :max caratteri',
+            
+    //     ]);
+    //     $validated_data = $validator->validate();
+    //     return $validated_data;
+    // }
 }
